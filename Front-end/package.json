@@ -1,0 +1,8 @@
+{
+  "name": "Front-end",
+  "description": "Projeto Front com ReactJs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Fellipe Silvério Brandão",
+  "license": "MIT"
+}
