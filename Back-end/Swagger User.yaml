@@ -1,0 +1,163 @@
+swagger: "2.0"
+info:
+  description: "CRUD de Usuário no banco de dados"
+  version: "1.0.0"
+  title: "Ps Delta"
+host: "localhost:3003"
+
+paths:
+  /user/:
+    get:
+      tags:
+        - "Obtém Usuáios do Banco"
+      summary: "Obtém todos  os usuários do banco de dados"
+      description: "Lista todos os usuários cadastrados no banco de dados"
+      operationId: "Obter"
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: '{error: "Não foi possível obter os dados do usuário. Tente novamente." }'
+
+  /user/{idUser}:
+    get:
+      summary: "Procura projeto pelo id"
+      description: "Retorna o usuário que pussui o id que foi requisitado"
+      operationId: "Obtém usuários"
+      tags:
+        - "Obtém pelo id"
+      parameters:
+        - name: idUser
+          in: path
+          description: "Id do usuário que será procurado"
+          type: string
+          required: true
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/user"
+        "400":
+          description: '{error: "Não foi possível obter os dados do usuário. Tente novamente." }'
+        "404":
+          description: '{error: "Usuário não encontrado" }'
+
+  /insere:
+    post:
+      summary: "Insere usuários no banco de dados"
+      description: "Insere usuários no banco de dados"
+      operationId: "Cria usua´rios"
+      tags:
+        - "Insere usuários"
+      parameters:
+        - in: body
+          name: body
+          description: inserir projeto
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: "string"
+                example: "fellipe"
+              address:
+                type: "string"
+                example: "rua silva, 123"
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: '{error: "Não foi possível salvar o usuário. Verifique os dados e tente novamente." }'
+
+  /user/featured-image/{userId}:
+    post:
+      summary: "Insere imagem do usuário informado no banco de dados"
+      description: "Insere usuários no banco de dados"
+      operationId: "Cria usua´rios"
+      tags:
+        - "Insere usuários"
+      parameters:
+        - in: body
+          name: userId
+          description: inserir image
+          required: true
+          schema:
+            type: object
+            properties:
+              featuredImage:
+                type: "string"
+                example: "perfil.png"
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: '{error: "Não foi possível salvar a imagem. Verifique os dados e tente novamente." }'
+
+  /atualiza/{userId}:
+    put:
+      summary: "Atualiza o usuário do banco de dados pelo Id"
+      description: "Atualiza o usuário que pussui o id informado"
+      operationId: "Atualiza pelo id"
+      tags:
+        - "Atualiza usuario pelo id"
+      parameters:
+        - name: userId
+          in: path
+          description: "Id do usuário que será procurado"
+          type: integer
+          format: int64
+          required: true
+        - in: body
+          name: body
+          description: atualizar usuário
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: "string"
+                example: "fellipe"
+              address:
+                type: "string"
+                example: "rua da silva, 123"
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/user"
+        "400":
+          description: '{error: "Não foi possível atualizar o usuário. Verifique os dados e tente novamente." }'
+
+  /delete/{userId}:
+    delete:
+      summary: "Deleta usuário do banco de dadospelo id informado"
+      description: "Deleta usuário do banco que pussui o id informado"
+      operationId: "Deleta usuário"
+      tags:
+        - "Deleta usuário"
+      parameters:
+        - name: userId
+          in: path
+          description: "Id do usuário que será procurado"
+          type: integer
+          format: int64
+          required: true
+      responses:
+        "200":
+          description: '{ message: "Usuário removido com sucesso." }'
+        "400":
+          description: '{error: "Erro ao remover usuário." }'
+
+definitions:
+  user:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      address:
+        type: string
+      featuredImage:
+        type: string
