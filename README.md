@@ -15,6 +15,7 @@
 - Utilização de StyledComponents 
 - Utilização do Axios
 - Utilização do Express 
+- Documentação do Back-end feito com Swagger
 
 ## Aplicação
 <img src="https://github.com/fellipe-s-brandao/Delta/blob/main/DeltaGif.gif" width="600">
