@@ -1,7 +1,7 @@
 # Processo seletivo da Delta Global
 ## Para rodar o Back-end:
-- É preciso instalar o MongoDB, pois o banco de dados é localhost, [Download MongoDB community server](https://www.mongodb.com/try/download/community)
-- É necessário a versão 14.18.1 do nodeJs, pois as versões mais recentes estão instáveis.
+- É preciso instalar o MongoDB, pois o banco de dados é localhost. [Download MongoDB community server](https://www.mongodb.com/try/download/community)
+- É necessário a versão 14.18.1 do nodeJs, pois as versões mais recentes estão instáveis. [Download do NodeJs 14.18.1](https://nodejs.org/download/release/v14.18.1/)
 - Navegue até a pasta 'Back-end', instale as dependências com `npm install` e inicie com `npm run serve`
 
 ## Para rodar o Front-end:
