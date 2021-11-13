@@ -1,10 +1,10 @@
-import { UserTable } from "../Users";
+import { UserView } from "../Users";
 import { Container } from "./styles";
 
 export function Main() {
   return (
     <Container>
-      <UserTable />
+      <UserView />
     </Container>
   );
 }

@@ -15,6 +15,7 @@ export function AddUser() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [textModal, setTextModal] = useState("");
 
+  //Função para fazer o post/inserir usuário
   function handleCreateUser(event) {
     event.preventDefault();
 
@@ -26,6 +27,8 @@ export function AddUser() {
         name,
         address,
       };
+
+      //Cria o usuário e retorna uma mensagem ao usuário
       api
         .post("user/insere", data)
         .then((res) => {
@@ -39,7 +42,6 @@ export function AddUser() {
           );
           setIsModalVisible(true);
         });
-
 
       setName("");
       setAddress("");
@@ -69,7 +71,9 @@ export function AddUser() {
           value={address}
         ></textarea>
 
-        <button className="buttonSave" type="submit">Cadastrar</button>
+        <button className="buttonSave" type="submit">
+          Cadastrar
+        </button>
 
         {isModalVisible ? (
           <Modal onClose={() => setIsModalVisible(false)}>
@@ -77,8 +81,10 @@ export function AddUser() {
           </Modal>
         ) : null}
       </Container>
+
+      {/* Chama o modal para inserir a imagem */}
       {featuredImage ? (
-        <AddImage onClose={() => setFeaturedImage(false)} id={idUser}/>
+        <AddImage onClose={() => setFeaturedImage(false)} id={idUser} />
       ) : null}
     </div>
   );

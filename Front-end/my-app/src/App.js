@@ -10,13 +10,11 @@ function App() {
   return (
     <>
       <Header />
-
       <Switch>
         <Route component={Main} path="/" exact />
         <Route component={AddUser} path="/add" />
         <Route component={EditUser} path="/edit/:id" />
       </Switch>
-
       <GlobalStyle />
     </>
   );

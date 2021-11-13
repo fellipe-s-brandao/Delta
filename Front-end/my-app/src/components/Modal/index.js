@@ -1,3 +1,5 @@
+//Modal para exibir mensagens na tela para o usuário 
+
 import {Container} from './styles';
 
 export function Modal({children, id = 'modal', onClose = () => {}}){

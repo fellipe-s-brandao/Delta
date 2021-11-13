@@ -12,12 +12,15 @@ export function AddImage({ id, onClose = () => {} }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [textModal, setTextModal] = useState("");
 
+  //Função para selecionar a imagem
   const handleImageChange = (e) => {
     setError(false);
     const selected = e.target.files[0];
 
+    //Verifica os tipos de arquivos
     const ALLOWED_TYPES = ["image/png", "image/jpeg", "image/jpg"];
     if (selected && ALLOWED_TYPES.includes(selected.type)) {
+      //Renderização da imagem na tela
       let reader = new FileReader();
       reader.onloadend = () => {
         setImgPreview(reader.result);
@@ -29,7 +32,9 @@ export function AddImage({ id, onClose = () => {} }) {
     }
   };
 
+  //Função para inserir a imagem no banco de dados
   const handleSaveImage = () => {
+    //Formata a imagem
     const formatData = new FormData();
     formatData.append("featuredImage", imgSelected);
 
@@ -39,6 +44,7 @@ export function AddImage({ id, onClose = () => {} }) {
       },
     };
 
+    //Faz o post/inserir a imagem no banco e retorna a mensagem ao usuário
     api
       .post(`user/featured-image/${id}`, formatData, headers)
       .then((res) => {
@@ -84,12 +90,11 @@ export function AddImage({ id, onClose = () => {} }) {
               Salvar imagem
             </button>
             {textModal === "Usuário salvo com sucesso!" ? (
-                <button className="removeImage" onClick={onClose} >
+              <button className="removeImage" onClick={onClose}>
                 {" "}
                 Fechar
               </button>
             ) : null}
-            
           </>
         )}
         {isModalVisible ? (

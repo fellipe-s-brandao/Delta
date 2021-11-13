@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
 import { api } from "../../services/api";
 
-export function UserTable() {
+export function UserView() {
   const [users, setUsers] = useState([]);
 
+  //Faz a requisição get da api para exibir os usuários
   useEffect(() => {
     api
       .get("user/")
@@ -17,11 +18,13 @@ export function UserTable() {
       });
   }, []);
 
+  //Faz a criação da url da img do usuário
   function urlImage(url){
     const UrlBase = `http://localhost:3003/${url}`;
     return UrlBase;
   }
 
+  //Faz a criação da Url com Id para editar o usuário
   function urlEdit(id){
     const UrlBase = `edit/${id}`;
     return UrlBase;
